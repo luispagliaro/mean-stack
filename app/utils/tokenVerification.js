@@ -5,7 +5,6 @@ let tokenVerification,
    jwt = require('jsonwebtoken');
 
 tokenVerification = (req, res, next) => {
-  console.log(req);
    let token = req.body.token || req.params.token || req.query.token || req.headers['x-access-token'];
 
    // Decodes token
