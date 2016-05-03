@@ -1,14 +1,16 @@
-var tokenVerification,
+'use strict';
+
+let tokenVerification,
   secret = 'meanstackapp',
   jwt = require('jsonwebtoken');
 
-tokenVerification = function(req, res, next) {
-  var token = req.body.token || req.params.token || req.headers['x-access-token'];
+tokenVerification = (req, res, next) => {
+  let token = req.body.token || req.params.token || req.headers['x-access-token'];
 
   // Decodes token
   if (token) {
     // Verifies secret and checks exp
-    jwt.verify(token, secret, function(err, decoded) {
+    jwt.verify(token, secret, (err, decoded) => {
       if (err) {
         return res.status(403).send({
           success: false,

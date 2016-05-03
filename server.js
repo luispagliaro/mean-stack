@@ -1,17 +1,19 @@
+'use strict';
+
 // BASE SETUP
 // ===============================
 
 // CALLS THE PACKAGES --------------------
 
-var express = require('express'),
+let express = require('express'),
   app = express(),
   adminRouter = express(),
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'),
-  path = require('path')
+  path = require('path'),
   // CALLS ROUTES --------------------
-usersRouter = require('./app/routes/users'),
+  usersRouter = require('./app/routes/users'),
   postsRouter = require('./app/routes/posts'),
   authRouter = require('./app/routes/authenticate'),
   meRouter = require('./app/routes/me'),
@@ -32,7 +34,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // configure our app to handle CORS requests
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \
@@ -47,9 +49,7 @@ app.use(morgan('dev'));
 // =============================
 
 // Sends index.html file to the user for the home page
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-});
+app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/index.html')));
 
 // ROUTES FOR THE API
 // =============================
@@ -63,13 +63,11 @@ apiRouter.use('/authenticate', authRouter);
 apiRouter.use('/me', usersRouter);
 
 // Middleware to verify token
-apiRouter.use(function(req, res, next) {
-  tokenVerification(req, res, next);
-});
+apiRouter.use((req, res, next) => TokenVerification(req, res, next));
 
 // Tests route to make sure everything is working
 // Accessed at GET http://localhost:8080/api
-apiRouter.get('/', function(req, res) {
+apiRouter.get('/', (req, res) => {
   res.json({
     message: 'Welcome to the API!'
   });

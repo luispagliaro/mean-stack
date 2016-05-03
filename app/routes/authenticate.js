@@ -1,4 +1,9 @@
-var express = require('express'),
+// ROUTES FOR AUTHENTICATE
+// ===============================
+
+'use strict';
+
+let express = require('express'),
   router = express.Router(),
   jwt = require('jsonwebtoken'),
   secret = 'meanstackapp',
@@ -7,12 +12,12 @@ var express = require('express'),
 // Routing /authenticate
 router.route('/')
 
-.post(function(req, res) {
+.post((req, res) => {
   // Finds the user
   // Selects the name username and password explicitly
   User.findOne({
     username: req.body.username
-  }).select('name username password').exec(function(err, user) {
+  }).select('name username password').exec((err, user) => {
     if (err) {
       throw err;
     }
@@ -25,7 +30,7 @@ router.route('/')
       });
     } else if (user) {
       // Checks if password matches
-      var validPassword = user.comparePassword(req.body.password);
+      let validPassword = user.comparePassword(req.body.password);
 
       if (!validPassword) {
         res.json({
@@ -34,7 +39,7 @@ router.route('/')
         });
       } else {
         // If user is found and password is right creates a token
-        var token = jwt.sign({
+        let token = jwt.sign({
           name: user.name,
           username: user.username
         }, secret, {

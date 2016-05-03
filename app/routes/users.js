@@ -1,7 +1,11 @@
 // ROUTES FOR USERS
 // ===============================
+'use strict';
 
-var express = require('express'),
+// ROUTES FOR USERS
+// ===============================
+
+let express = require('express'),
   router = express.Router(),
   User = require('../models/user');
 
@@ -14,7 +18,7 @@ var express = require('express'),
 });*/
 
 // route middleware to validate :user_id
-router.param('user_id', function(req, res, next, user_id) {
+router.param('user_id', (req, res, next, user_id) => {
   // do validation on id here
   // log something so we know its working
   console.log('doing id validations on ' + user_id);
@@ -29,9 +33,9 @@ router.param('user_id', function(req, res, next, user_id) {
 router.route('/')
 
 // Creates a user (accessed at POST http://localhost:8080/api/users)
-.post(function(req, res) {
+.post((req, res) => {
   // Creates a new instance of the User model
-  var user = new User();
+  let user = new User();
 
   // Sets the users information (comes from the request)
   user.name = req.body.name;
@@ -39,7 +43,7 @@ router.route('/')
   user.password = req.body.password;
 
   // Saves the user and check for errors
-  user.save(function(err) {
+  user.save((err) => {
     if (err) {
       if (err.code == 11000) {
         return res.json({
@@ -58,8 +62,8 @@ router.route('/')
 })
 
 // Gets all the users (accessed at GET http://localhost:8080/api/users)
-.get(function(req, res) {
-  User.find(function(err, users) {
+.get((req, res) => {
+  User.find((err, users) => {
     if (err) {
       return res.send(err);
     }
@@ -71,8 +75,8 @@ router.route('/')
 router.route('/:user_id')
 
 // Gets the user with that id (accessed at GET http://localhost:8080/api/users/:user_id)
-.get(function(req, res) {
-  User.findById(req.params.user_id, function(err, user) {
+.get((req, res) => {
+  User.findById(req.params.user_id, (err, user) => {
     if (err) {
       return res.send(err);
     }
@@ -82,8 +86,8 @@ router.route('/:user_id')
 })
 
 // Updates the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
-.put(function(req, res) {
-  User.findById(req.params.user_id, function(err, user) {
+.put((req, res) => {
+  User.findById(req.params.user_id, (err, user) => {
     if (err) {
       return res.send(err);
     }
@@ -100,7 +104,7 @@ router.route('/:user_id')
       user.password = req.body.password;
     }
 
-    user.save(function(err) {
+    user.save((err) => {
       if (err) {
         return res.send(err);
       }
@@ -113,10 +117,10 @@ router.route('/:user_id')
 })
 
 // Deletes the user with this id (accessed at DELETE http://localhost:8080/api/users/:user_id)
-.delete(function(req, res) {
+.delete((req, res) => {
   User.remove({
     _id: req.params.user_id
-  }, function(err, user) {
+  }, (err, user) => {
     if (err) {
       return res.send(err);
     }
