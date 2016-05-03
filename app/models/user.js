@@ -52,7 +52,7 @@ UserSchema.pre('save', (next) => {
 });
 
 // Method to compare a given password with the database hash
-UserSchema.methods.comparePassword = (password) => {
+UserSchema.methods.comparePassword = function(password) {
   let user = this;
 
   return bcrypt.compareSync(password, user.password);

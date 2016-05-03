@@ -49,7 +49,7 @@ router.route('/')
         // Returns the information including token as JSON
         res.json({
           success: true,
-          message: 'Enjoy your token!',
+          message: 'Token created',
           token: token
         });
       }

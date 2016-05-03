@@ -63,7 +63,7 @@ apiRouter.use('/authenticate', authRouter);
 apiRouter.use('/me', usersRouter);
 
 // Middleware to verify token
-apiRouter.use((req, res, next) => TokenVerification(req, res, next));
+apiRouter.use((req, res, next) => { tokenVerification(req, res, next) });
 
 // Tests route to make sure everything is working
 // Accessed at GET http://localhost:8080/api

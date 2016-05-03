@@ -21,7 +21,7 @@ let express = require('express'),
 router.param('user_id', (req, res, next, user_id) => {
   // do validation on id here
   // log something so we know its working
-  console.log('doing id validations on ' + user_id);
+  console.log(`doing id validations on ${user_id}`);
 
   // once validation is done save the new item in the req
   req.user_id = user_id;
