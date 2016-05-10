@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "brew services start mongodb && node server.js"
+    "start": "gulp dev-server"
   },
   "author": "Luis Pagliaro",
   "license": "ISC",
