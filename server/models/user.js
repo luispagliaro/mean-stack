@@ -1,6 +1,6 @@
 'use strict';
 
-let mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   bcrypt = require('bcrypt-nodejs'),
   UserSchema;
@@ -32,7 +32,7 @@ UserSchema = new Schema({
 
 // Hashes the password before the user is saved
 UserSchema.pre('save', function(next) {
-  let user = this;
+  var user = this;
 
   // Hashes the password only if the password has been changed or user is new
   if (!user.isModified('password')) {
@@ -53,7 +53,7 @@ UserSchema.pre('save', function(next) {
 
 // Method to compare a given password with the database hash
 UserSchema.methods.comparePassword = function(password) {
-  let user = this;
+  var user = this;
 
   return bcrypt.compareSync(password, user.password);
 };

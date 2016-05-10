@@ -1,11 +1,11 @@
 'use strict';
 
-let tokenVerification,
+var tokenVerification,
   config = require('../../config'),
   jwt = require('jsonwebtoken');
 
 tokenVerification = (req, res, next) => {
-  let token = req.body.token || req.params.token || req.query.token || req.headers['x-access-token'];
+  var token = req.body.token || req.params.token || req.query.token || req.headers['x-access-token'];
 
   // Decodes token
   if (token) {

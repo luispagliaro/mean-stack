@@ -3,7 +3,7 @@
 angular.module('userService', [])
 
 .factory('User', function($http) {
-  let userFactory = {};
+  var userFactory = {};
 
   // Gets a single user
   userFactory.get = function(id) {

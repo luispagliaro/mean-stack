@@ -3,7 +3,7 @@
 // ROUTES FOR POSTS
 // ===============================
 
-let express = require('express'),
+var express = require('express'),
   router = express.Router();
 
 // Routes /posts

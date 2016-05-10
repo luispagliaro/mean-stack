@@ -8,7 +8,7 @@ angular.module('authService', [])
   // inject AuthToken to manage tokens
   // ===================================================
   .factory('Auth', function($http, $q, AuthToken) {
-    let authFactory = {};
+    var authFactory = {};
 
     authFactory.login = function(username, password) {
       return $http.post('/api/authenticate', {
@@ -42,7 +42,7 @@ angular.module('authService', [])
 // inject $window to store token client-side
 // ===================================================
 .factory('AuthToken', function($window) {
-  let authTokenFactory = {},
+  var authTokenFactory = {},
     localStorage = $window.localStorage;
 
   // Gets the token out of local storage
@@ -64,10 +64,10 @@ angular.module('authService', [])
 // application configuration to integrate token into requests
 // ===================================================
 .factory('AuthInterceptor', function($q, $location, AuthToken) {
-  let interceptorFactory = {};
+  var interceptorFactory = {};
 
   interceptorFactory.request = function(config) {
-    let token = AuthToken.getToken();
+    var token = AuthToken.getToken();
 
     if (token) {
       config.headers['x-access-token'] = token;

@@ -3,7 +3,7 @@
 
 'use strict';
 
-let express = require('express'),
+var express = require('express'),
   router = express.Router(),
   jwt = require('jsonwebtoken'),
   config = require('../../config'),
@@ -30,7 +30,7 @@ router.route('/')
       });
     } else if (user) {
       // Checks if password matches
-      let validPassword = user.comparePassword(req.body.password);
+      var validPassword = user.comparePassword(req.body.password);
 
       if (!validPassword) {
         res.json({
@@ -39,7 +39,7 @@ router.route('/')
         });
       } else {
         // If user is found and password is right creates a token
-        let token = jwt.sign({
+        var token = jwt.sign({
           name: user.name,
           username: user.username
         }, config.secret, {

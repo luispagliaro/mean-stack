@@ -2,7 +2,7 @@
 
 angular.module('userCtrl', ['userService'])
   .controller('userController', function(User) {
-    let vm = this;
+    var vm = this;
 
     vm.processing = true;
 
@@ -31,7 +31,7 @@ angular.module('userCtrl', ['userService'])
   })
 
 .controller('userCreateController', function(User) {
-  let vm = this;
+  var vm = this;
 
   // variable to hide/show elements of the view
   // differentiates between create or edit pages

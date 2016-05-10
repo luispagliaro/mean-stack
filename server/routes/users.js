@@ -5,7 +5,7 @@
 // ROUTES FOR USERS
 // ===============================
 
-let express = require('express'),
+var express = require('express'),
   router = express.Router(),
   User = require('../models/user');
 
@@ -27,7 +27,7 @@ router.route('/')
 // Creates a user (accessed at POST http://localhost:8080/api/users)
 .post((req, res) => {
   // Creates a new instance of the User model
-  let user = new User();
+  var user = new User();
 
   // Sets the users information (comes from the request)
   user.name = req.body.name;

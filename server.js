@@ -5,7 +5,7 @@
 
 // CALLS THE PACKAGES --------------------
 
-let express = require('express'),
+var express = require('express'),
   app = express(),
   adminRouter = express(),
   mongoose = require('mongoose'),
@@ -34,12 +34,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// Logs all requests to the console
-app.use(morgan('dev'));
+if (config.env === 'development') {
+  // Logs all requests to the console
+  app.use(morgan('dev'));
 
-// Loads node_modules
-app.use('/node_modules', express.static('node_modules'));
-app.use(express.static(__dirname + '/client'));
+  // Loads node_modules
+  app.use('/node_modules', express.static('node_modules'));
+  app.use(express.static(__dirname + '/client'));
+} else {
+
+}
+
 
 // ROUTES
 // =============================

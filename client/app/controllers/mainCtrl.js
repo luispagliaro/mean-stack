@@ -2,7 +2,7 @@
 
 angular.module('mainCtrl', [])
   .controller('mainController', function($rootScope, $location, Auth) {
-    let vm = this;
+    var vm = this;
 
     vm.loggedIn = Auth.checkLogin();
     vm.processing = false;

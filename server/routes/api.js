@@ -1,13 +1,13 @@
 'use strict';
 
-let usersRouter = require('./users'),
+var usersRouter = require('./users'),
   postsRouter = require('./posts'),
   authRouter = require('./authenticate'),
   meRouter = require('./me'),
   tokenVerification = require('../utils/tokenVerification');
 
 module.exports = (app, express) => {
-  let apiRouter = express.Router();
+  var apiRouter = express.Router();
 
   // ROUTES FOR THE API
   // =============================
