@@ -53,4 +53,4 @@ app.get('*', (req, res) => res.sendFile(path.join(`${__dirname}/client/app/views
 // START THE SERVER
 // ===============================
 app.listen(config.port);
-console.log('Magic happens on port ' + config.port);
+console.log('Node server running on port ' + config.port);
