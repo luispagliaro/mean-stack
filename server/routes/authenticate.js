@@ -6,13 +6,13 @@
 let express = require('express'),
   router = express.Router(),
   jwt = require('jsonwebtoken'),
-  secret = 'meanstackapp',
+  config = require('../../config'),
   User = require('../models/user');
 
 // Routing /authenticate
 router.route('/')
 
-.post((req, res) => {
+  .post((req, res) => {
   // Finds the user
   // Selects the name username and password explicitly
   User.findOne({
@@ -42,7 +42,7 @@ router.route('/')
         let token = jwt.sign({
           name: user.name,
           username: user.username
-        }, secret, {
+        }, config.secret, {
           expiresIn: 1440 * 60 // Expires in 24 hours
         });
 
