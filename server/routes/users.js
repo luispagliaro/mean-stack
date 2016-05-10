@@ -9,14 +9,6 @@ let express = require('express'),
   router = express.Router(),
   User = require('../models/user');
 
-// Middleware to use for all requests
-/*router.use('/', function(req, res, next) {
-  console.log(req.method, req.url);
-
-  // Makes sure we go to the next routes and don't stop here
-  next();
-});*/
-
 // route middleware to validate :user_id
 router.param('user_id', (req, res, next, user_id) => {
   // do validation on id here
@@ -126,7 +118,7 @@ router.route('/:user_id')
     }
 
     res.json({
-      message: 'Successfully deleted'
+      message: 'User deleted'
     });
   });
 });
