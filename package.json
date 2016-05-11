@@ -1,12 +1,16 @@
 {
   "name": "mean-stack",
   "version": "1.0.0",
-  "description": "",
+  "description": "User CRM developed using MongoDB, ExpressJs, AngularJS and NodeJS.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp dev-server"
+    "start": "gulp prod-server"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luispagliaro/mean-stack/"
+  }
   "author": "Luis Pagliaro",
   "license": "ISC",
   "devDependencies": {
