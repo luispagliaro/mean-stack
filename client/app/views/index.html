@@ -7,6 +7,8 @@
   <!-- Sets the base path for angular routing -->
   <base href="/">
   <!-- inject:css -->
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
   <!-- endinject -->
 </head>
 
@@ -37,6 +39,14 @@
     <div ng-view></div>
   </main>
   <!-- inject:js -->
+  <script src="/node_modules/angular/angular.js"></script>
+  <script src="/node_modules/angular-route/angular-route.js"></script>
+  <script src="/app/services/userService.js"></script>
+  <script src="/app/services/authService.js"></script>
+  <script src="/app/controllers/userCtrl.js"></script>
+  <script src="/app/controllers/mainCtrl.js"></script>
+  <script src="/app/app.routes.js"></script>
+  <script src="/app/app.js"></script>
   <!-- endinject -->
 </body>
 
