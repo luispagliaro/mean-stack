@@ -6,23 +6,8 @@
   <title>My First Angular Application!</title>
   <!-- Sets the base path for angular routing -->
   <base href="/">
-  <!-- CSS -->
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- JS -->
-  <!-- load angular and our custom application -->
-  <script src="../node_modules/angular/angular.js"></script>
-  <script src="../node_modules/angular-route/angular-route.js"></script>
-  <!-- controllers -->
-  <script src="app/controllers/mainCtrl.js"></script>
-  <script src="app/controllers/userCtrl.js"></script>
-  <!-- services -->
-  <script src="app/services/authService.js"></script>
-  <script src="app/services/userService.js"></script>
-  <!-- main Angular app files -->
-  <script src="app/app.js"></script>
-  <script src="app/app.routes.js"></script>
+  <!-- inject:css -->
+  <!-- endinject -->
 </head>
 
 <!-- declare our angular application and angular controller -->
@@ -51,6 +36,8 @@
   <main class="container-fluid">
     <div ng-view></div>
   </main>
+  <!-- inject:js -->
+  <!-- endinject -->
 </body>
 
 </html>

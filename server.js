@@ -13,6 +13,7 @@ var express = require('express'),
   morgan = require('morgan'),
   path = require('path'),
   config = require('./config'),
+  root = config.env === 'development' ? '/client' : '/public',
   apiRouter = require('./server/routes/api')(app, express);
 
 // APP CONFIGURATION ---------------------
@@ -40,9 +41,9 @@ if (config.env === 'development') {
 
   // Loads node_modules
   app.use('/node_modules', express.static('node_modules'));
-  app.use(express.static(__dirname + '/client'));
+  app.use(express.static(__dirname + root));
 } else {
-
+  app.use(express.static(__dirname + root));
 }
 
 
@@ -53,7 +54,7 @@ if (config.env === 'development') {
 app.use('/api', apiRouter);
 
 // Sends index.html file to the user for the home page
-app.get('*', (req, res) => res.sendFile(path.join(`${__dirname}/client/app/views/index.html`)));
+app.get('*', (req, res) => res.sendFile(path.join(`${__dirname}${root}/app/views/index.html`)));
 
 // START THE SERVER
 // ===============================
